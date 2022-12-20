@@ -23,7 +23,7 @@ class Person
   private :of_age?
 end
 
-mat = Person.new(12, 'Mat', parent_permission: false)
-puts mat.inspect
-puts mat.can_use_services?
-puts mat.of_age?
+# mat = Person.new(12, 'Mat', parent_permission: false)
+# puts mat.inspect
+# puts mat.can_use_services?
+# puts mat.of_age?
