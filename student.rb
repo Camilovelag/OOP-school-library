@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './person'
 
 # Class student
@@ -10,6 +8,8 @@ class Student < Person
   end
 
   def play_hooky
+    # rubocop disable: all
     "¯\(ツ)/¯"
+    # rubocop enable: all
   end
 end
