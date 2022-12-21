@@ -8,8 +8,8 @@ class Student < Person
   end
 
   def play_hooky
-    # rubocop disable: all
+# rubocop:disable all
     "¯\(ツ)/¯"
-    # rubocop enable: all
+# rubocop:enable all
   end
 end
