@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './nameable'
 
 # class Person
@@ -10,6 +12,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    super()
   end
 
   def of_age?
