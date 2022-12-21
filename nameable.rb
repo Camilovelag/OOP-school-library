@@ -4,6 +4,3 @@ class Nameable
     raise 'NotImplementedError'
   end
 end
-
-name = Nameable.new
-puts name.correct_name
