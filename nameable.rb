@@ -1,5 +1,5 @@
 # class nameable
-class Nameable
+class Nameable < ApplicationRecord
   def correct_name
     raise 'NotImplementedError'
   end
