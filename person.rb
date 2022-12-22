@@ -1,8 +1,11 @@
 require './nameable'
+require './capitalize_decorator'
+require './trimmer_decorator'
+require './rental'
 
 # class Person
 class Person < Nameable
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rentals
   attr_reader :id
 
   def initialize(age, name = 'unknown', parent_permission: true)
@@ -10,6 +13,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
     super()
   end
 
@@ -23,6 +27,12 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def rent(date, book)
+    return if @rentals.length.positive? && @rentals[@rentals.length - 1].person == self
+
+    Rental.new(date, book, self)
   end
 
   private :of_age?
