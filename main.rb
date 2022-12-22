@@ -1,4 +1,5 @@
 require './app'
+
 def main
   puts 'Welcome to School Library App!'
   puts ''
