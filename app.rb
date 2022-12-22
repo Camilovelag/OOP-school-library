@@ -1,5 +1,11 @@
 # class app
 class App
+  def initialize
+    @books = []
+    @people = []
+    @rentals = []
+  end
+
   def run
     menu
     option = gets.chomp.to_i
@@ -34,4 +40,12 @@ class App
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
   end
+
+  # def list_books
+  # def list_people
+  # def create_person
+  # def create_book
+  # def create_rental
+  # def list_rentals_by_person_id
+
 end
