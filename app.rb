@@ -10,30 +10,30 @@ class App
   end
 
   def run
+    menu_options = {
+      # '1' => method(:list_books),
+      # '2' => method(:list_people),
+      '3' => method(:create_person),
+      '4' => method(:create_book)
+      # '5' => method(:create_rental),
+      # '6' => method(:list_rentals_by_person_id)
+    }
+
     menu
     option = gets.chomp.to_i
     case option
-    when 1
-      list_books
-    when 2
-      list_people
-    when 3
-      create_person
-    when 4
-      create_book
-    when 5
-      create_rental
-    when 6
-      list_rentals_by_person_id
+    when 1..6
+      menu_options[option.to_s].call
     when 7
       puts 'Thank you for using this app!'
-      return
     else
       puts 'That is not a valid option'
+      run
     end
   end
 
   def menu
+    puts ''
     puts 'Please choose an option by entering a number:'
     puts '1 - List all books'
     puts '2 - List all people'
@@ -60,13 +60,13 @@ class App
       puts 'That is not a valid input'
       return
     end
-    
+
     @people.push(person)
     puts 'Person created successfully'
     puts ''
     run
   end
-  
+
   def create_student
     print 'Age: '
     age = gets.chomp.to_i
@@ -74,7 +74,7 @@ class App
     name = gets.chomp
     print 'Has parent permission? [Y/N]: '
     permission = gets.chomp.downcase == 'y'
-    person = Student.new(name, age, parent_permission: permission)
+    Student.new(name, age, parent_permission: permission)
   end
 
   def create_teacher
@@ -84,21 +84,19 @@ class App
     name = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    person = Teacher.new(name, age, specialization)
+    Teacher.new(name, age, specialization)
   end
 
-
-  # def permission_validation(permission)
-  #   case permission
-  #   when 'y'
-  #     permission = true
-  #   when 'n'
-  #     permission = false
-  #   else
-  #     puts 'That is not a valid input'
-
-
-  # def create_book
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    book = Book.new(title, author)
+    @books.push(book)
+    puts 'Book created successfully'
+    run
+  end
   # def create_rental
   # def list_rentals_by_person_id
 

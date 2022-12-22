@@ -1,6 +1,5 @@
 require './student'
 
-# class classroom
 class Classroom
   attr_accessor :label
   attr_reader :student_list
