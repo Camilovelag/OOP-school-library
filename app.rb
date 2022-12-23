@@ -14,8 +14,8 @@ class App
       '1' => method(:list_books),
       '2' => method(:list_people),
       '3' => method(:create_person),
-      '4' => method(:create_book)
-      # '5' => method(:create_rental)
+      '4' => method(:create_book),
+      '5' => method(:create_rental)
       # '6' => method(:list_rentals_by_person_id)
     }
 
@@ -46,10 +46,12 @@ class App
 
   def list_books
     @books.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
+    run
   end
 
   def list_people
     @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
+    run
   end
 
   def create_person
@@ -100,9 +102,25 @@ class App
     run
   end
 
-  # def create_rental
-  #   puts 'Select a book from the following list by number'
-  #   @books.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
+  def create_rental
+    puts 'Select a book from the following list by number'
+    @books.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
+    book_index = gets.chomp.to_i
+    puts ''
+
+    puts 'Select a person from the following list by number (not id)'
+    @people.each_with_index do |person, index|
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    person_index = gets.chomp.to_i
+    puts ''
+
+    print 'Date: '
+    date = gets.chomp
+    @rentals.push(Rental.new(date, @books[book_index], @people[person_index]))
+    puts 'Rental created successfully'
+    run
+  end
 
   # def list_rentals_by_person_id
 
