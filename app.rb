@@ -11,11 +11,11 @@ class App
 
   def run
     menu_options = {
-      # '1' => method(:list_books),
+      '1' => method(:list_books),
       '2' => method(:list_people),
       '3' => method(:create_person),
       '4' => method(:create_book)
-      # '5' => method(:create_rental),
+      # '5' => method(:create_rental)
       # '6' => method(:list_rentals_by_person_id)
     }
 
@@ -44,7 +44,10 @@ class App
     puts '7 - Exit'
   end
 
-  # def list_books
+  def list_books
+    @books.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
+  end
+
   def list_people
     @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
   end
@@ -96,7 +99,11 @@ class App
     puts 'Book created successfully'
     run
   end
+
   # def create_rental
+  #   puts 'Select a book from the following list by number'
+  #   @books.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
+
   # def list_rentals_by_person_id
 
   private :create_student, :create_teacher
