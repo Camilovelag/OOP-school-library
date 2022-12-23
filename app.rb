@@ -15,8 +15,8 @@ class App
       '2' => method(:list_people),
       '3' => method(:create_person),
       '4' => method(:create_book),
-      '5' => method(:create_rental)
-      # '6' => method(:list_rentals_by_person_id)
+      '5' => method(:create_rental),
+      '6' => method(:list_rentals_by_person_id)
     }
 
     menu
@@ -122,7 +122,15 @@ class App
     run
   end
 
-  # def list_rentals_by_person_id
+  def list_rentals_by_person_id
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    puts 'Rentals:'
+    @rentals.each do |rental|
+      puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
+    end
+    run
+  end
 
   private :create_student, :create_teacher
 end
