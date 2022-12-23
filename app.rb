@@ -12,7 +12,7 @@ class App
   def run
     menu_options = {
       # '1' => method(:list_books),
-      # '2' => method(:list_people),
+      '2' => method(:list_people),
       '3' => method(:create_person),
       '4' => method(:create_book)
       # '5' => method(:create_rental),
@@ -45,12 +45,13 @@ class App
   end
 
   # def list_books
-  # def list_people
+  def list_people
+    @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
+  end
 
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     option = gets.chomp.to_i
-
     case option
     when 1
       person = create_student
@@ -58,12 +59,10 @@ class App
       person = create_teacher
     else
       puts 'That is not a valid input'
-      return
+      run
     end
-
     @people.push(person)
     puts 'Person created successfully'
-    puts ''
     run
   end
 
